@@ -17,8 +17,18 @@ gtag('consent', 'default', {
 });
 </script>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://www.instagram.com/joy_micro">
     <title>Redirecionando...</title>
+    <script>
+        function openInstagram() {
+            // Tenta abrir o app do Instagram
+            window.location.href = "instagram://user?username=joy_micro";
+
+            // Se falhar, após 500ms redireciona para a versão web
+            setTimeout(function() {
+                window.location.href = "https://www.instagram.com/joy_micro/";
+            }, 500);
+        }
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -27,10 +37,10 @@ gtag('consent', 'default', {
         })(window,document,'script','dataLayer','GTM-K7JHXKX8');</script>
         <!-- End Google Tag Manager -->
 </head>
-<body><!-- Google Tag Manager (noscript) -->
+<body onload="openInstagram()">
+    <p>Redirecionando para o Instagram...</p>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7JHXKX8"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <p>Se você não foi redirecionado, <a href="https://www.instagram.com/joy_micro">clique aqui</a>.</p>
 </body>
 </html>
