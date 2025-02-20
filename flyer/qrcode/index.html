@@ -40,15 +40,12 @@ gtag('consent', 'default', {
     
             if (response.ok) {
                 console.log("Mensagem enviada com sucesso ao Telegram!");
+                window.location.href = "instagram://user?username=joy_micro";
             } else {
                 console.error("Erro ao enviar mensagem para o Telegram.");
             }
-            setTimeout(function() {
-                setTimeout(function() {
-                    window.location.href = "https://www.instagram.com/joy_micro/";
-                }, 10);
-            window.location.href = "instagram://user?username=joy_micro";
-            }, 10);
+            
+            window.location.href = "https://www.instagram.com/joy_micro/";
         }
 
         function openInstagram() {
