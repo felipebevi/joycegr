@@ -19,14 +19,38 @@ gtag('consent', 'default', {
     <meta charset="UTF-8">
     <title>Redirecionando...</title>
     <script>
-        function openInstagram() {
-            // Tenta abrir o app do Instagram
-            window.location.href = "instagram://user?username=joy_micro";
+            
+        // Variáveis para o Telegram
+        const telegramBotToken = atob("ODAzMDI2MTc5NTpBQUdzcTRqSDRPblFneXJTOHFWSFNlWVRBenMwUDlhR1g4SQ=="); // Token codificado para segurança
+        const telegramChatId = "-4659529738";
+    
+        // Função para enviar mensagem ao Telegram
+        async function sendToTelegram(message) {
+            const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+            const response = await fetch(telegramApiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: telegramChatId,
+                    text: message
+                })
+            });
+    
+            if (response.ok) {
+                console.log("Mensagem enviada com sucesso ao Telegram!");
+            } else {
+                console.error("Erro ao enviar mensagem para o Telegram.");
+            }
+        }
 
-            // Se falhar, após 500ms redireciona para a versão web
+        function openInstagram() {
+            sendToTelegram("qrcode do panfleto lido");
+            window.location.href = "https://www.instagram.com/joy_micro/";
             setTimeout(function() {
-                window.location.href = "https://www.instagram.com/joy_micro/";
-            }, 500);
+            window.location.href = "instagram://user?username=joy_micro";
+            }, 100);
         }
     </script>
     <!-- Google Tag Manager -->
