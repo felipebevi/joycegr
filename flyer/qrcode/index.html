@@ -43,14 +43,16 @@ gtag('consent', 'default', {
             } else {
                 console.error("Erro ao enviar mensagem para o Telegram.");
             }
+            setTimeout(function() {
+                setTimeout(function() {
+                    window.location.href = "https://www.instagram.com/joy_micro/";
+                }, 10);
+            window.location.href = "instagram://user?username=joy_micro";
+            }, 10);
         }
 
         function openInstagram() {
             sendToTelegram("qrcode do panfleto lido");
-            window.location.href = "https://www.instagram.com/joy_micro/";
-            setTimeout(function() {
-            window.location.href = "instagram://user?username=joy_micro";
-            }, 100);
         }
     </script>
     <!-- Google Tag Manager -->
