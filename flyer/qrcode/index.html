@@ -19,40 +19,37 @@ gtag('consent', 'default', {
     <meta charset="UTF-8">
     <title>Redirecionando...</title>
     <script>
-            
-        // Variáveis para o Telegram
-        const telegramBotToken = atob("ODAzMDI2MTc5NTpBQUdzcTRqSDRPblFneXJTOHFWSFNlWVRBenMwUDlhR1g4SQ=="); // Token codificado para segurança
+        const telegramBotToken = atob("ODAzMDI2MTc5NTpBQUdDcjgtZ29mR1VscFNZbGhnbk40ZGJBS1JGbGRPY29qNA==");
         const telegramChatId = "-4659529738";
     
-        // Função para enviar mensagem ao Telegram
-        async function sendToTelegram(message) {
-            const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-            const response = await fetch(telegramApiUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    chat_id: telegramChatId,
-                    text: message
-                })
-            });
-    
-            if (response.ok) {
-                console.log("Mensagem enviada com sucesso ao Telegram!");
-                window.setTimeout(function(){
-                    window.location.href = "https://instagram.com/joy_micro/";
-                },100);
-            } else {
-                console.error("Erro ao enviar mensagem para o Telegram.");
+        function sendToTelegram(message) {
+            try {
+                fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: telegramChatId,
+                        text: message
+                    })
+                }).catch(() => {
+                    // erro ignorado de propósito
+                });
+            } catch (e) {
+                // erro ignorado de propósito
             }
-            
         }
-
+    
         function openInstagram() {
+            // dispara o envio (fire and forget)
             sendToTelegram("qrcode do panfleto lido");
+    
+            // redireciona SEM depender do Telegram
+            setTimeout(() => {
+                window.location.href = "https://instagram.com/joy_micro/";
+            }, 100);
         }
     </script>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
